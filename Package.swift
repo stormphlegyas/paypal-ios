@@ -13,10 +13,6 @@ let package = Package(
             targets: ["CorePayments"]
         ),
         .library(
-           name: "PayPalNativePayments",
-           targets: ["PayPalNativePayments"]
-        ),
-        .library(
             name: "PaymentButtons",
             targets: ["PaymentButtons"]
         ),
@@ -27,10 +23,6 @@ let package = Package(
         .library(
             name: "CardPayments",
             targets: ["CardPayments"]
-        ),
-        .library(
-            name: "FraudProtection",
-            targets: ["FraudProtection", "PPRiskMagnes"]
         )
     ],
     targets: [
@@ -47,11 +39,6 @@ let package = Package(
             resources: [.copy("PrivacyInfo.xcprivacy")]
         ),
         .target(
-           name: "PayPalNativePayments",
-           dependencies: ["CorePayments", "PayPalCheckout"],
-           resources: [.copy("PrivacyInfo.xcprivacy")]
-        ),
-        .target(
             name: "PaymentButtons",
             dependencies: ["CorePayments"],
             resources: [.copy("PrivacyInfo.xcprivacy")]
@@ -60,20 +47,6 @@ let package = Package(
             name: "PayPalWebPayments",
             dependencies: ["CorePayments"],
             resources: [.copy("PrivacyInfo.xcprivacy")]
-        ),
-        .target(
-            name: "FraudProtection",
-            dependencies: ["CorePayments", "PPRiskMagnes"],
-            resources: [.copy("PrivacyInfo.xcprivacy")]
-        ),
-        .binaryTarget(
-            name: "PPRiskMagnes",
-            path: "Frameworks/XCFrameworks/PPRiskMagnes.xcframework"
-        ),
-        .binaryTarget(
-            name: "PayPalCheckout",
-            url: "https://github.com/paypal/paypalcheckout-ios/releases/download/1.3.0/PayPalCheckout.xcframework.zip",
-            checksum: "d65186f38f390cb9ae0431ecacf726774f7f89f5474c48244a07d17b248aa035"
         )
     ]
 )
