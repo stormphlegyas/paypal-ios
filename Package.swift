@@ -23,10 +23,6 @@ let package = Package(
         .library(
             name: "CardPayments",
             targets: ["CardPayments"]
-        ),
-        .library(
-            name: "FraudProtection",
-            targets: ["FraudProtection", "PPRiskMagnes"]
         )
     ],
     targets: [
@@ -51,15 +47,6 @@ let package = Package(
             name: "PayPalPayments",
             dependencies: ["CorePayments"],
             resources: [.copy("PrivacyInfo.xcprivacy")]
-        ),
-        .target(
-            name: "FraudProtection",
-            dependencies: ["CorePayments", "PPRiskMagnes"],
-            resources: [.copy("PrivacyInfo.xcprivacy")]
-        ),
-        .binaryTarget(
-            name: "PPRiskMagnes",
-            path: "Frameworks/XCFrameworks/PPRiskMagnes.xcframework"
         )
     ]
 )
